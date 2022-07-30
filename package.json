@@ -24,6 +24,9 @@
 		"type": "git",
 		"url": "https://github.com/DEsimas/yt-stream-bot.git"
 	},
+	"devDependencies": {
+		"typescript": "^4.7.4"
+	},
 	"engines": {
 		"node": "v16.15.1",
 		"npm": "v8.11.0"
