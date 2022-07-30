@@ -35,7 +35,8 @@
 	},
 	"dependencies": {
 		"discord.js": "11.6.4",
-		"dotenv": "^16.0.1"
+		"dotenv": "^16.0.1",
+		"puppeteer": "^15.5.0"
 	},
 	"devDependencies": {
 		"@types/node": "^18.6.2",
