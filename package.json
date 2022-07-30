@@ -28,6 +28,11 @@
 		"dist/**/*"
 	],
 	"main": "./dist/main.js",
+	"scripts": {
+		"start:dev": "npm run build && npm run start",
+		"start": "node ./dist/main.js",
+		"build": "npx tsc"
+	},
 	"devDependencies": {
 		"typescript": "^4.7.4"
 	},
