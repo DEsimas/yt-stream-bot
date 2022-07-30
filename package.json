@@ -33,6 +33,9 @@
 		"start": "node ./dist/main.js",
 		"build": "npx tsc"
 	},
+	"dependencies": {
+		"discord.js": "11.6.4"
+	},
 	"devDependencies": {
 		"typescript": "^4.7.4"
 	},
