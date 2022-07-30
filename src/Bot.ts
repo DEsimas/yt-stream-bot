@@ -1,4 +1,5 @@
 import { Client, Message } from "discord.js";
+import { Browser } from "./Browser";
 
 export interface BotOptions {
 	token: string;
@@ -9,18 +10,26 @@ export class Bot {
 	private readonly token: string;
 	private readonly prefix: string;
 	private readonly client: Client;
+	private readonly browser: Browser;
 
 	constructor(options: BotOptions) {
 		this.token = options.token;
 		this.prefix = options.prefix || "!";
 
 		this.client = new Client();
+		this.browser = new Browser();
 
+		this.launchBrowser();
 		this.setHandlers();
 	}
 
 	public login(): void {
 		this.client.login(this.token);
+	}
+
+	private async launchBrowser(): Promise<void> {
+		await this.browser.launch();
+		await this.browser.setPage();
 	}
 
 	private async setHandlers(): Promise<void> {
@@ -33,6 +42,16 @@ export class Bot {
 	}
 
 	private async messageHandler(message: Message): Promise<void> {
-		console.log("owo");
+		if (message.content.indexOf(this.prefix) != 0) return;
+
+		switch (message.content.split(" ")[0].slice(1)) {
+			case "watch":
+				try {
+					await this.browser.openVideo(message.content.split(" ")[1]);
+				} catch {
+					message.channel.send("**Wrong video url**");
+				}
+				break;
+		}
 	}
 };
