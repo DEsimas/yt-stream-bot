@@ -17,7 +17,7 @@ export class Browser {
 		if (!this.browser) throw new Error("Browser not launched");
 		this.page = await this.browser.newPage();
 		this.page.setDefaultNavigationTimeout(0);
-		this.page.setViewport({ width: 1366, height: 786 });
+		this.page.setViewport({ width: 1800, height: 1010 });
 	}
 
 	public async openVideo(url: string): Promise<void> {
