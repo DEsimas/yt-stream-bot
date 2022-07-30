@@ -1,12 +1,32 @@
 {
-  "name": "yt-stream-bot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+	"name": "yt-stream-bot",
+	"version": "1.0.0",
+	"description": "Discord self bot for streaming videos from youtube to voice channel",
+	"keywords": [
+		"discord",
+		"self-bot",
+		"bot",
+		"node",
+		"youtube"
+	],
+	"homepage": "https://github.com/DEsimas/yt-stream-bot",
+	"bugs": {
+		"url": "https://github.com/DEsimas/yt-stream-bot/issues",
+		"email": "simasuh@gmail.com"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Serafim Sukharev",
+		"email": "simasuh@gmail.com",
+		"url": "https://github.com/DEsimas"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DEsimas/yt-stream-bot.git"
+	},
+	"engines": {
+		"node": "v16.15.1",
+		"npm": "v8.11.0"
+	},
+	"private": false
 }
