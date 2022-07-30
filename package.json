@@ -34,7 +34,8 @@
 		"build": "npx tsc"
 	},
 	"dependencies": {
-		"discord.js": "11.6.4"
+		"discord.js": "11.6.4",
+		"dotenv": "^16.0.1"
 	},
 	"devDependencies": {
 		"typescript": "^4.7.4"
