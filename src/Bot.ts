@@ -29,7 +29,7 @@ export class Bot {
 	}
 
 	private async readyHandler(): Promise<void> {
-		console.log("uwu");
+		console.log(`Logged in as ${this.client.user.tag}`);
 	}
 
 	private async messageHandler(message: Message): Promise<void> {
