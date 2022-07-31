@@ -65,16 +65,16 @@ export class Bot {
 		switch (message.content.split(" ")[0].slice(1)) {
 			case "watch":
 				try {
-					if (this.controller) {
-						if (this.controller.deletable) await this.controller.delete();
-					}
-
 					await this.browser.openVideo(message.content.split(" ")[1]);
-
+					
 					const embed = new MessageEmbed()
 						.setColor("RED")
 						.setTitle("**Use buttons to control player**");
 
+					if (this.controller) {
+						if (this.controller.deletable) await this.controller.delete();
+					}
+					
 					this.controller = await message.reply({ embeds: [embed], components: this.getActionRows() })
 				} catch {
 					message.channel.send("**Wrong video url**");
