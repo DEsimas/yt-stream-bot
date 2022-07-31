@@ -2,7 +2,7 @@ import * as Puppeteer from "puppeteer";
 
 export interface BrowserOptions {
 	viewport?: Puppeteer.Viewport;
-}
+};
 
 export class Browser {
 	private readonly viewport: Puppeteer.Viewport;
