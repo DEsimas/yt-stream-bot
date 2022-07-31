@@ -1,9 +1,10 @@
 import { Client, Message } from "discord.js";
-import { Browser } from "./Browser";
+import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
 	token: string;
 	prefix?: string;
+	browserOptions?: BrowserOptions;
 };
 
 export class Bot {
@@ -17,7 +18,7 @@ export class Bot {
 		this.prefix = options.prefix || "!";
 
 		this.client = new Client();
-		this.browser = new Browser();
+		this.browser = new Browser(options.browserOptions);
 
 		this.launchBrowser();
 		this.setHandlers();
