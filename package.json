@@ -34,7 +34,7 @@
 		"build": "npx tsc"
 	},
 	"dependencies": {
-		"discord.js": "^14.1.2",
+		"discord.js": "^13.9.2",
 		"dotenv": "^16.0.1",
 		"puppeteer": "^15.5.0"
 	},
