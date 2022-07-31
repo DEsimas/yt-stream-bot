@@ -1,4 +1,4 @@
-import { Client, Message, GatewayIntentBits } from "discord.js";
+import { Client, Intents, Message } from "discord.js";
 import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
@@ -22,9 +22,8 @@ export class Bot {
 		this.prefix = options.prefix || "!";
 
 		this.intents = [
-			GatewayIntentBits.Guilds,
-			GatewayIntentBits.GuildMessages,
-			GatewayIntentBits.MessageContent
+			Intents.FLAGS.GUILDS,
+			Intents.FLAGS.GUILD_MESSAGES
 		];
 
 		this.client = new Client({ intents: this.intents });
