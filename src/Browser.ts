@@ -70,6 +70,10 @@ export class Browser {
 		await this.page?.keyboard.press("F");
 	}
 
+	public async subtitles(): Promise<void> {
+		await this.page?.keyboard.press("C");
+	}
+
 	private validateURL(url: string): boolean {
 		return url.slice(0, 17) == "https://youtu.be/" ||
 			url.slice(0, 23) == "http://www.youtube.com/" ||
