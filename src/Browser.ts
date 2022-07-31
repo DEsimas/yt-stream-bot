@@ -58,14 +58,6 @@ export class Browser {
 		await this.page?.keyboard.press("K");
 	}
 
-	public async slow(): Promise<void> {
-		await this.page?.keyboard.press("<");
-	}
-
-	public async fast(): Promise<void> {
-		await this.page?.keyboard.press(">");
-	}
-
 	public async fullscreen(): Promise<void> {
 		await this.page?.keyboard.press("F");
 	}

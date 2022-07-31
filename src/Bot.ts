@@ -99,12 +99,6 @@ export class Bot {
 			case 'pause':
 				this.browser.pause();
 				break;
-			case 'slow':
-				this.browser.slow();
-				break;
-			case 'speed':
-				this.browser.fast();
-				break;
 			case 'full':
 				this.browser.fullscreen();
 				break;
