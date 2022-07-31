@@ -137,20 +137,12 @@ export class Bot {
 			new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('slow')
-						.setLabel('slower')
-						.setStyle('PRIMARY'),
-					new MessageButton()
 						.setCustomId('full')
 						.setEmoji('🖥️')
 						.setStyle('PRIMARY'),
 					new MessageButton()
 						.setCustomId('subtitles')
 						.setEmoji('📋')
-						.setStyle('PRIMARY'),
-					new MessageButton()
-						.setCustomId('speed')
-						.setLabel('faster')
 						.setStyle('PRIMARY')
 				)
 		]
