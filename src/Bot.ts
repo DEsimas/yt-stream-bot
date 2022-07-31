@@ -5,6 +5,7 @@ export interface BotOptions {
 	token: string;
 	channelID: string;
 	prefix?: string;
+	role?: string;
 	browserOptions?: BrowserOptions;
 };
 
@@ -12,6 +13,7 @@ export class Bot {
 	private readonly token: string;
 	private readonly channelID: string;
 	private readonly prefix: string;
+	private readonly role: string | undefined;
 	private readonly intents: number[];
 	private readonly client: Client;
 	private readonly browser: Browser;
@@ -22,6 +24,7 @@ export class Bot {
 		this.token = options.token;
 		this.channelID = options.channelID;
 		this.prefix = options.prefix || "!";
+		this.role = options.role;
 
 		this.intents = [
 			Intents.FLAGS.GUILDS,
@@ -55,6 +58,7 @@ export class Bot {
 	}
 
 	private async messageHandler(message: Message): Promise<void> {
+		if (this.role && !message.guild?.members.cache.find((user) => (user.id == message.author.id))?.roles.cache.has(this.role)) return;
 		if (message.content.indexOf(this.prefix) != 0) return;
 		if (message.channel.id != this.channelID) return;
 

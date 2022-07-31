@@ -10,6 +10,7 @@ let options: BotOptions = {
 	token: process.env.TOKEN,
 	channelID: process.env.CHANNEL,
 	prefix: process.env.PREFIX,
+	role: process.env.ROLE
 }
 
 try {
