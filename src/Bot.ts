@@ -3,18 +3,21 @@ import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
 	token: string;
+	channelID: string;
 	prefix?: string;
 	browserOptions?: BrowserOptions;
 };
 
 export class Bot {
 	private readonly token: string;
+	private readonly channelID: string;
 	private readonly prefix: string;
 	private readonly client: Client;
 	private readonly browser: Browser;
 
 	constructor(options: BotOptions) {
 		this.token = options.token;
+		this.channelID = options.channelID;
 		this.prefix = options.prefix || "!";
 
 		this.client = new Client();
@@ -44,15 +47,16 @@ export class Bot {
 
 	private async messageHandler(message: Message): Promise<void> {
 		if (message.content.indexOf(this.prefix) != 0) return;
+		if (message.channel.id != this.channelID) return;
 
-		switch (message.content.split(" ")[0].slice(1)) {
-			case "watch":
-				try {
-					await this.browser.openVideo(message.content.split(" ")[1]);
-				} catch {
-					message.channel.send("**Wrong video url**");
-				}
-				break;
-		}
+			switch (message.content.split(" ")[0].slice(1)) {
+				case "watch":
+					try {
+						await this.browser.openVideo(message.content.split(" ")[1]);
+					} catch {
+						message.channel.send("**Wrong video url**");
+					}
+					break;
+			}
 	}
 };
