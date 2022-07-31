@@ -41,6 +41,11 @@ export class Browser {
 		await this.page?.keyboard.press("P");
 	}
 
+	public async next(): Promise<void> {
+		this.page?.keyboard.press("ShiftLeft");
+		await this.page?.keyboard.press("N");
+	}
+
 	private validateURL(url: string): boolean {
 		return url.slice(0, 17) == "https://youtu.be/" ||
 			url.slice(0, 23) == "http://www.youtube.com/" ||
