@@ -1,4 +1,4 @@
-import { Client, Intents, Message, MessageEmbed } from "discord.js";
+import { Client, Intents, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
 import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
@@ -60,21 +60,69 @@ export class Bot {
 		switch (message.content.split(" ")[0].slice(1)) {
 			case "watch":
 				try {
-					if(this.controller) {
-						if(this.controller.deletable) await this.controller.delete();
+					if (this.controller) {
+						if (this.controller.deletable) await this.controller.delete();
 					}
-					
+
 					await this.browser.openVideo(message.content.split(" ")[1]);
 
 					const embed = new MessageEmbed()
 						.setColor("RED")
 						.setTitle("**Use buttons to control player**");
 
-					this.controller = await message.reply({embeds: [embed]})
+					this.controller = await message.reply({ embeds: [embed], components: this.getActionRows() })
 				} catch {
 					message.channel.send("**Wrong video url**");
 				}
 				break;
 		}
+	}
+
+	private getActionRows(): Array<MessageActionRow> {
+		return [
+			new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('prev')
+						.setEmoji('⏮️')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('seekb')
+						.setEmoji('⬅️')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('pause')
+						.setEmoji('⏯️')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('seekf')
+						.setEmoji('➡️')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('next')
+						.setEmoji('⏭️')
+						.setStyle('PRIMARY'),
+					
+				),
+			new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('slow')
+						.setLabel('slower')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('full')
+						.setEmoji('🖥️')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('subtitles')
+						.setEmoji('📋')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('speed')
+						.setLabel('faster')
+						.setStyle('PRIMARY')
+				)
+		]
 	}
 };
