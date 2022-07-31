@@ -50,6 +50,10 @@ export class Browser {
 		await this.page?.keyboard.press("J");
 	}
 
+	public async seek_for(): Promise<void> {
+		await this.page?.keyboard.press("L");
+	}
+
 	private validateURL(url: string): boolean {
 		return url.slice(0, 17) == "https://youtu.be/" ||
 			url.slice(0, 23) == "http://www.youtube.com/" ||
