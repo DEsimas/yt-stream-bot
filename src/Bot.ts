@@ -1,4 +1,4 @@
-import { Client, Intents, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
+import { Client, Intents, Interaction, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
 import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
@@ -47,6 +47,7 @@ export class Bot {
 	private async setHandlers(): Promise<void> {
 		this.client.on("ready", () => this.readyHandler());
 		this.client.on("messageCreate", (message) => this.messageHandler(message));
+		this.client.on('interactionCreate', (interaction) => this.interactionHandler(interaction));
 	}
 
 	private async readyHandler(): Promise<void> {
@@ -78,6 +79,32 @@ export class Bot {
 		}
 	}
 
+	private async interactionHandler(interaction: Interaction): Promise<void> {
+		if (!interaction.isButton()) return;
+		interaction.deferUpdate();
+
+		switch (interaction.customId) {
+			case 'prev':
+				break;
+			case 'next':
+				break;
+			case 'seekb':
+				break;
+			case 'seekf':
+				break;
+			case 'pause':
+				break;
+			case 'slow':
+				break;
+			case 'speed':
+				break;
+			case 'full':
+				break;
+			case 'subtitles':
+				break;
+		}
+	}
+
 	private getActionRows(): Array<MessageActionRow> {
 		return [
 			new MessageActionRow()
@@ -102,7 +129,7 @@ export class Bot {
 						.setCustomId('next')
 						.setEmoji('⏭️')
 						.setStyle('PRIMARY'),
-					
+
 				),
 			new MessageActionRow()
 				.addComponents(
