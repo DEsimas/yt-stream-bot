@@ -85,6 +85,7 @@ export class Bot {
 
 	private async interactionHandler(interaction: Interaction): Promise<void> {
 		if (!interaction.isButton()) return;
+		if (this.role && !interaction.guild?.members.cache.find((user) => (user.id == interaction.user.id))?.roles.cache.has(this.role)) return;
 		interaction.deferUpdate();
 
 		switch (interaction.customId) {
