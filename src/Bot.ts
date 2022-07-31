@@ -1,4 +1,4 @@
-import { Client, Message } from "discord.js";
+import { Client, Message, GatewayIntentBits } from "discord.js";
 import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
@@ -12,6 +12,7 @@ export class Bot {
 	private readonly token: string;
 	private readonly channelID: string;
 	private readonly prefix: string;
+	private readonly intents: number[];
 	private readonly client: Client;
 	private readonly browser: Browser;
 
@@ -20,7 +21,13 @@ export class Bot {
 		this.channelID = options.channelID;
 		this.prefix = options.prefix || "!";
 
-		this.client = new Client();
+		this.intents = [
+			GatewayIntentBits.Guilds,
+			GatewayIntentBits.GuildMessages,
+			GatewayIntentBits.MessageContent
+		];
+
+		this.client = new Client({ intents: this.intents });
 		this.browser = new Browser(options.browserOptions);
 
 		this.launchBrowser();
@@ -38,25 +45,25 @@ export class Bot {
 
 	private async setHandlers(): Promise<void> {
 		this.client.on("ready", () => this.readyHandler());
-		this.client.on("message", (message) => this.messageHandler(message));
+		this.client.on("messageCreate", (message) => this.messageHandler(message));
 	}
 
 	private async readyHandler(): Promise<void> {
-		console.log(`Logged in as ${this.client.user.tag}`);
+		console.log(`Logged in as ${this.client.user ? this.client.user.tag : ""}`);
 	}
 
 	private async messageHandler(message: Message): Promise<void> {
 		if (message.content.indexOf(this.prefix) != 0) return;
 		if (message.channel.id != this.channelID) return;
 
-			switch (message.content.split(" ")[0].slice(1)) {
-				case "watch":
-					try {
-						await this.browser.openVideo(message.content.split(" ")[1]);
-					} catch {
-						message.channel.send("**Wrong video url**");
-					}
-					break;
-			}
+		switch (message.content.split(" ")[0].slice(1)) {
+			case "watch":
+				try {
+					await this.browser.openVideo(message.content.split(" ")[1]);
+				} catch {
+					message.channel.send("**Wrong video url**");
+				}
+				break;
+		}
 	}
 };
