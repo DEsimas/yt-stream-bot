@@ -85,22 +85,31 @@ export class Bot {
 
 		switch (interaction.customId) {
 			case 'prev':
+				this.browser.previous();
 				break;
 			case 'next':
+				this.browser.next();
 				break;
 			case 'seekb':
+				this.browser.seek_back();
 				break;
 			case 'seekf':
+				this.browser.seek_for();
 				break;
 			case 'pause':
+				this.browser.pause();
 				break;
 			case 'slow':
+				this.browser.slow();
 				break;
 			case 'speed':
+				this.browser.fast();
 				break;
 			case 'full':
+				this.browser.fullscreen();
 				break;
 			case 'subtitles':
+				this.browser.subtitles();
 				break;
 		}
 	}
