@@ -31,8 +31,19 @@ export class Browser {
 
 	public async openVideo(url: string): Promise<void> {
 		if (!this.page) throw new Error("Page not opened");
-		if (url.slice(0, 17) != "https://youtu.be/" || url.indexOf("?") != -1) throw new Error("Invalid video url");
+		if (!this.validateURL(url)) throw new Error("Invalid video url");
 		await this.page?.goto(url);
 		setTimeout(async () => await this.page?.keyboard.press("F"), 2000);
+	}
+
+	private validateURL(url: string): boolean {
+		return url.slice(0, 17) == "https://youtu.be/" ||
+			url.slice(0, 23) == "http://www.youtube.com/" ||
+			url.slice(0, 16) == "http://youtu.be/" ||
+			url.slice(0, 24) == "https://www.youtube.com/" ||
+			url.slice(0, 33) == "https://www.youtube-nocookie.com/" ||
+			url.slice(0, 32) == "http://www.youtube-nocookie.com/" ||
+			url.slice(0, 19) == "http://youtube.com/" ||
+			url.slice(0, 20) == "https://youtube.com/";
 	}
 };
