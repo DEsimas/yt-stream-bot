@@ -1,19 +1,28 @@
 import { config } from "dotenv";
-import { Bot } from "./Bot";
+import { Bot, BotOptions } from "./Bot";
 
 config();
 
 if (!process.env.TOKEN) throw new Error("TOKEN is not provided");
 
-const bot = new Bot({
+let options: BotOptions = {
 	token: process.env.TOKEN,
 	prefix: process.env.PREFIX,
-	browserOptions: {
+}
+
+try {
+	options.browserOptions = {
 		viewport: {
 			width: Number(process.env.VP_WIDTH),
 			height: Number(process.env.VP_HEIGHT)
 		}
 	}
-});
+
+	if(isNaN(Number(process.env.VP_WIDTH)) || isNaN(Number(process.env.VP_HEIGHT))) throw new Error("viewport size is NaN");
+} catch {
+	options.browserOptions = undefined;
+}
+
+const bot = new Bot(options);
 
 bot.login();
