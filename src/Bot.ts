@@ -110,6 +110,9 @@ export class Bot {
 			case 'subtitles':
 				this.browser.subtitles();
 				break;
+			case 'wide':
+				this.browser.wide();
+				break;
 		}
 	}
 
