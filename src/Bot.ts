@@ -66,7 +66,7 @@ export class Bot {
 			case "watch":
 				try {
 					await this.browser.openVideo(message.content.split(" ")[1]);
-					
+
 					const embed = new MessageEmbed()
 						.setColor("RED")
 						.setTitle("**Use buttons to control player**");
@@ -74,7 +74,7 @@ export class Bot {
 					if (this.controller) {
 						if (this.controller.deletable) await this.controller.delete();
 					}
-					
+
 					this.controller = await message.reply({ embeds: [embed], components: this.getActionRows() })
 				} catch {
 					message.channel.send("**Wrong video url**");
@@ -121,10 +121,6 @@ export class Bot {
 			new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('prev')
-						.setEmoji('⏮️')
-						.setStyle('PRIMARY'),
-					new MessageButton()
 						.setCustomId('seekb')
 						.setEmoji('⬅️')
 						.setStyle('PRIMARY'),
@@ -136,11 +132,17 @@ export class Bot {
 						.setCustomId('seekf')
 						.setEmoji('➡️')
 						.setStyle('PRIMARY'),
+				),
+			new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('prev')
+						.setEmoji('⏮️')
+						.setStyle('PRIMARY'),
 					new MessageButton()
 						.setCustomId('next')
 						.setEmoji('⏭️')
 						.setStyle('PRIMARY'),
-
 				),
 			new MessageActionRow()
 				.addComponents(
