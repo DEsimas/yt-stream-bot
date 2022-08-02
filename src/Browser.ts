@@ -65,6 +65,10 @@ export class Browser {
 		await this.page?.keyboard.press("C");
 	}
 
+	public async wide(): Promise<void> {
+		await this.page?.keyboard.press("T");
+	}
+
 	private validateURL(url: string): boolean {
 		return url.slice(0, 17) == "https://youtu.be/" ||
 			url.slice(0, 23) == "http://www.youtube.com/" ||
