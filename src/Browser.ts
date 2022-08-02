@@ -33,7 +33,6 @@ export class Browser {
 		if (!this.page) throw new Error("Page not opened");
 		if (!this.validateURL(url)) throw new Error("Invalid video url");
 		await this.page?.goto(url);
-		setTimeout(async () => await this.page?.keyboard.press("F"), 2000);
 	}
 
 	public async previous(): Promise<void> {
