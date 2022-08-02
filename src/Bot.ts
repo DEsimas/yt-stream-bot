@@ -142,6 +142,10 @@ export class Bot {
 			new MessageActionRow()
 				.addComponents(
 					new MessageButton()
+						.setCustomId("wide")
+						.setEmoji("↔️")
+						.setStyle("PRIMARY"),
+					new MessageButton()
 						.setCustomId('full')
 						.setEmoji('🖥️')
 						.setStyle('PRIMARY'),
