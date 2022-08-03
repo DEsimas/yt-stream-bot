@@ -1,10 +1,9 @@
 {
 	"name": "yt-stream-bot",
 	"version": "1.0.0",
-	"description": "Discord self bot for streaming videos from youtube to voice channel",
+	"description": "Discord bot for streaming videos from youtube to voice channel",
 	"keywords": [
 		"discord",
-		"self-bot",
 		"bot",
 		"node",
 		"youtube"
