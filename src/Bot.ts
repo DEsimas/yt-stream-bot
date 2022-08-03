@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits, Interaction, Message, MessageActionRow, MessageButton, EmbedBuilder } from "discord.js";
+import { Client, GatewayIntentBits, Interaction, Message, ActionRowBuilder, ButtonBuilder, EmbedBuilder, ButtonStyle } from "discord.js";
 import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
@@ -116,48 +116,48 @@ export class Bot {
 		}
 	}
 
-	private getActionRows(): Array<MessageActionRow> {
+	private getActionRows(): Array<ActionRowBuilder<ButtonBuilder>> {
 		return [
-			new MessageActionRow()
+			new ActionRowBuilder<ButtonBuilder>()
 				.addComponents(
-					new MessageButton()
+					new ButtonBuilder()
 						.setCustomId('seekb')
 						.setEmoji('⬅️')
-						.setStyle('PRIMARY'),
-					new MessageButton()
+						.setStyle(ButtonStyle.Primary),
+					new ButtonBuilder()
 						.setCustomId('pause')
 						.setEmoji('⏯️')
-						.setStyle('PRIMARY'),
-					new MessageButton()
+						.setStyle(ButtonStyle.Primary),
+					new ButtonBuilder()
 						.setCustomId('seekf')
 						.setEmoji('➡️')
-						.setStyle('PRIMARY'),
+						.setStyle(ButtonStyle.Primary),
 				),
-			new MessageActionRow()
+			new ActionRowBuilder<ButtonBuilder>()
 				.addComponents(
-					new MessageButton()
+					new ButtonBuilder()
 						.setCustomId('prev')
 						.setEmoji('⏮️')
-						.setStyle('PRIMARY'),
-					new MessageButton()
+						.setStyle(ButtonStyle.Primary),
+					new ButtonBuilder()
 						.setCustomId('next')
 						.setEmoji('⏭️')
-						.setStyle('PRIMARY'),
+						.setStyle(ButtonStyle.Primary),
 				),
-			new MessageActionRow()
+			new ActionRowBuilder<ButtonBuilder>()
 				.addComponents(
-					new MessageButton()
+					new ButtonBuilder()
 						.setCustomId("wide")
 						.setEmoji("↔️")
-						.setStyle("PRIMARY"),
-					new MessageButton()
+						.setStyle(ButtonStyle.Primary),
+					new ButtonBuilder()
 						.setCustomId('full')
 						.setEmoji('🖥️')
-						.setStyle('PRIMARY'),
-					new MessageButton()
+						.setStyle(ButtonStyle.Primary),
+					new ButtonBuilder()
 						.setCustomId('subtitles')
 						.setEmoji('📋')
-						.setStyle('PRIMARY')
+						.setStyle(ButtonStyle.Primary)
 				)
 		]
 	}
