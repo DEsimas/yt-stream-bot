@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits, Interaction, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
+import { Client, GatewayIntentBits, Interaction, Message, MessageActionRow, MessageButton, EmbedBuilder } from "discord.js";
 import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
@@ -67,8 +67,8 @@ export class Bot {
 				try {
 					await this.browser.openVideo(message.content.split(" ")[1]);
 
-					const embed = new MessageEmbed()
-						.setColor("RED")
+					const embed = new EmbedBuilder()
+						.setColor("Red")
 						.setTitle("**Use buttons to control player**");
 
 					if (this.controller) {
