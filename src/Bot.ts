@@ -28,7 +28,8 @@ export class Bot {
 
 		this.intents = [
 			GatewayIntentBits.Guilds,
-			GatewayIntentBits.GuildMessages
+			GatewayIntentBits.GuildMessages,
+			GatewayIntentBits.MessageContent
 		];
 
 		this.client = new Client({ intents: this.intents });
@@ -112,6 +113,12 @@ export class Bot {
 				break;
 			case 'wide':
 				this.browser.wide();
+				break;
+			case 'up':
+				this.browser.up();
+				break;
+			case 'down':
+				this.browser.down();
 				break;
 		}
 	}
