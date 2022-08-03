@@ -1,4 +1,4 @@
-import { Client, Intents, Interaction, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
+import { Client, GatewayIntentBits, Interaction, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
 import { Browser, BrowserOptions } from "./Browser";
 
 export interface BotOptions {
@@ -27,8 +27,8 @@ export class Bot {
 		this.role = options.role;
 
 		this.intents = [
-			Intents.FLAGS.GUILDS,
-			Intents.FLAGS.GUILD_MESSAGES
+			GatewayIntentBits.Guilds,
+			GatewayIntentBits.GuildMessages
 		];
 
 		this.client = new Client({ intents: this.intents });
