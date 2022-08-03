@@ -143,6 +143,14 @@ export class Bot {
 						.setCustomId('next')
 						.setEmoji('⏭️')
 						.setStyle(ButtonStyle.Primary),
+					new ButtonBuilder()
+						.setCustomId("up")
+						.setEmoji("⏫")
+						.setStyle(ButtonStyle.Primary),
+					new ButtonBuilder()
+						.setCustomId('down')
+						.setEmoji("⏬")
+						.setStyle(ButtonStyle.Primary)
 				),
 			new ActionRowBuilder<ButtonBuilder>()
 				.addComponents(
