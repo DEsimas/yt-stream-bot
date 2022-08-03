@@ -2,6 +2,12 @@
 
 This bot controls youtube in chrome browser which can be streamed to your friends in discord.
 
+Inspired by [Mantra27](https://github.com/Mantra27/discord-bot-video-stream-beta)
+
+Preview
+
+[![Youtube link](https://img.youtube.com/vi/TjV4kzbuDNE/0.jpg)](https://youtu.be/TjV4kzbuDNE)
+
 ## Usage
 
 1) Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [node](https://nodejs.org/en/download/), [npm](https://docs.npmjs.com/cli/v8/configuring-npm/install#using-a-node-installer-to-install-node-js-and-npm) and [chrome](https://www.google.com/chrome/) on your computer
