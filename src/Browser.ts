@@ -38,11 +38,17 @@ export class Browser {
 	}
 
 	public async previous(): Promise<void> {
+		if(this.isShorts)
+			return this.page?.keyboard.press("ArrowUp");
+		
 		this.page?.keyboard.press("ShiftLeft");
 		await this.page?.keyboard.press("P");
 	}
 
 	public async next(): Promise<void> {
+		if(this.isShorts)
+			return this.page?.keyboard.press("ArrowDown");
+
 		this.page?.keyboard.press("ShiftLeft");
 		await this.page?.keyboard.press("N");
 	}
