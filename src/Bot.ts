@@ -114,12 +114,6 @@ export class Bot {
 			case 'wide':
 				this.browser.wide();
 				break;
-			case 'up':
-				this.browser.up();
-				break;
-			case 'down':
-				this.browser.down();
-				break;
 		}
 	}
 
