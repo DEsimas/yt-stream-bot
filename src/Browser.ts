@@ -70,11 +70,11 @@ export class Browser {
 	}
 
 	public async up(): Promise<void> {
-		await this.page?.mouse.up();
+		await this.page?.mouse.wheel({ deltaY: -1000 });
 	}
 
 	public async down(): Promise<void> {
-		await this.page?.mouse.down();
+		await this.page?.mouse.wheel({ deltaY: 1000 });
 	}
 
 	private validateURL(url: string): boolean {
