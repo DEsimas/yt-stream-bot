@@ -9,6 +9,7 @@ export class Browser {
 
 	private browser?: Puppeteer.Browser;
 	private page?: Puppeteer.Page;
+	private isShorts?: boolean;
 
 	constructor(options?: BrowserOptions) {
 		this.viewport = options?.viewport || {
@@ -32,6 +33,7 @@ export class Browser {
 	public async openVideo(url: string): Promise<void> {
 		if (!this.page) throw new Error("Page not opened");
 		if (!this.validateURL(url)) throw new Error("Invalid video url");
+		this.isShorts = url.search("shorts") != -1;
 		await this.page?.goto(url);
 	}
 
