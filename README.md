@@ -1,14 +1,22 @@
 # yt-stream-bot
 
-This bot controls youtube in chrome browser which can be streamed to your friends in discord.
+Discord bot for streaming youtube videos. Works like theatre. Requires one "human" account for streaming video from PC to channel and bot account for controlling first one's browser. 
 
 Inspired by [Mantra27](https://github.com/Mantra27/discord-bot-video-stream-beta)
 
-Preview
+# Preview
 
 [![Youtube link](https://img.youtube.com/vi/TjV4kzbuDNE/0.jpg)](https://youtu.be/TjV4kzbuDNE)
 
-## Usage
+# Tecnologies
+
+<ul>
+    <li>Node.js with typescript</li>
+    <li>discord.js v14 library for interacting with discord api</li>
+    <li>puppeteer to control chrome</li>
+</ul>
+
+# Usage
 
 1) Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [node](https://nodejs.org/en/download/), [npm](https://docs.npmjs.com/cli/v8/configuring-npm/install#using-a-node-installer-to-install-node-js-and-npm) and [chrome](https://www.google.com/chrome/) on your computer
 
@@ -34,3 +42,28 @@ VP_HEIGHT = <monitor height in pixels>
 7) Stream it using "human" account. Be careful **this** **account** **can** **be** **blocked!**
 
 8) Use `!watch <video url>` command to play video.
+
+# .env
+
+<table>
+    <tr>
+        <th>TOKEN</th>
+        <th>token for discord bot</th>
+    </tr>
+    <tr>
+        <th>CHANNEL</th>
+        <th>id of text channel with commands</th>
+    </tr>
+    </tr>
+        <th>ROLE</th>
+        <th>users with this role id can use bot, don't state for access from anybody</th>
+    <tr>
+    <tr>
+        <th>VP_WIDTH</th>
+        <th>monitor width in pixels</th>
+    </tr>
+    <tr>
+        <th>VP_HEIGHT</th>
+        <th>monitor height in pixels</th>
+    </tr>
+</table>
